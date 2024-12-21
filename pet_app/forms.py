@@ -8,5 +8,5 @@ class AddPetForm(forms.Form):
 
 
 class BlogForm(forms.Form):
-    tile  = forms.CharField(label='Title', max_length=255, required=True)
+    title  = forms.CharField(label='Title', max_length=255, required=True)
     content = forms.CharField(label='Content', widget=forms.Textarea, required=True)

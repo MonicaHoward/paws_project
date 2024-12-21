@@ -30,7 +30,7 @@ def add_pet_form(request):
     return render(request, "pet_app/add_pet.html", {'form': form})
 
 def create_blog(request):
-    blog_form = BlogForm()
+    blog_form = BlogForm(request.POST)
     if request.method == "POST":
         if blog_form.is_valid():
             blog_data = blog_form.cleaned_data
@@ -43,11 +43,15 @@ def create_blog(request):
 
             new_blog.save()
 
-            return redirect('home')
+            return redirect('get_blog')
 
     else:
         blog_form  
     return render(request, "pet_app/create_blog.html", {'blog_form': blog_form})
+
+def get_blog(request):
+    blog = Blog.objects.all()
+    return render(request, "pet_app/blogs.html",  {'blogs': blog})
 
 
 
